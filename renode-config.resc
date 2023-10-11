@@ -1,4 +1,4 @@
-:name: nrf52840 Discovery Printf
+:name: nrf52840 Printf
 :description: This script runs the usart_printf example on nrf52840
 
 $name?="nrf52"
