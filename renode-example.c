@@ -1,8 +1,8 @@
 #include <errno.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <libopencm3/nrf/uart.h>
-#include <libopencm3/nrf/gpio.h>
+#include <libopencm3/nrf/52/uart.h>
+#include <libopencm3/nrf/52/gpio.h>
 
 #define UART_BASE UART0
 #define UART_TX_PIN GPIO1
@@ -12,13 +12,11 @@ int _write(int file, char *ptr, int len);
 
 static void uart_setup(void)
 {
-	
     /* Setup UART parameters. */
 	uart_configure(UART_BASE, UART_TX_PIN, GPIO_UNCONNECTED, GPIO_UNCONNECTED, GPIO_UNCONNECTED, UART_BAUD_115200, false);
 	
 	/* Enable the UART. */
     uart_enable(UART_BASE);
-	
 }
 
 static void gpio_setup(void)
