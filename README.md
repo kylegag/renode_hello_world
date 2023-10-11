@@ -8,6 +8,7 @@ Steps to run
 3. make project by sending "make" command in directory in a WSL (Windows Subsystem for Linux) terminal
 4. start simulation by sending "renode renode-config.resc" in a Windows CMD terminal
 
+
 Errors:
 The "hello world!" print is not coming through on the uart terminal window. It appears renode was not expecting the the TX registers to be written to because it is giving the below warnings.
 
@@ -21,3 +22,7 @@ To see a working renode project go to commit 326551123846018a1ff808222daf4c1ab59
 This commit is just a copy of this project for the STM32: https://github.com/memfault/interrupt/tree/master/example/renode
 It is discussed in this article: https://interrupt.memfault.com/blog/intro-to-renode
 
+
+Design considerations:
+
+For this project I had to use the most recent release of the OpenCM3 library because support for the nRF had only recently been added. I used the nRF52840 because renode had an existing config for the board. I attempted to use the OpenCM3 functions to print a uart message to the terminal.
