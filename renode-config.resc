@@ -1,16 +1,21 @@
-:name: STM32F4 Discovery Printf
-:description: This script runs the usart_printf example on stm32f4 discovery
+:name: nrf52840 Discovery Printf
+:description: This script runs the usart_printf example on nrf52840
 
-$name?="STM32F4_Discovery"
+$name?="nrf52"
 $bin?=@renode-example.elf
 
 # Create Machine & Load config
 mach create $name
-machine LoadPlatformDescription @platforms/boards/stm32f4_discovery-kit.repl
-machine LoadPlatformDescription @add-ccm.repl
+machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
+
 
 # Create a terminal window showing the output of UART2
-showAnalyzer sysbus.usart2
+showAnalyzer sysbus.uart0
+
+# set log level to noisy
+logLevel -1
+sysbus LogAllPeripheralsAccess true
+sysbus.cpu LogFunctionNames true
 
 # Enable GDB
 machine StartGdbServer 3333
@@ -21,3 +26,5 @@ macro reset
 """
 
 runMacro $reset
+
+start

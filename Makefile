@@ -1,5 +1,5 @@
 OPENCM3_DIR=libopencm3
-OPENCM3_COMMIT=89074d6a13ed7febba04d3c421ce7bf2b7972156
+OPENCM3_COMMIT=master
 OPENCM3_SETUP_FILE=$(OPENCM3_DIR)/$(OPENCM3_COMMIT)
 
 all: $(OPENCM3_SETUP_FILE)
@@ -13,7 +13,7 @@ clean:
 # Let's do a cheap hack and clone it here instead
 $(OPENCM3_SETUP_FILE): $(OPENCM3_DIR)
 	@echo "Initializing OPENCM3 Lib"
-	git -C $(OPENCM3_DIR) checkout 89074d6a13ed7febba04d3c421ce7bf2b7972156
+	git -C $(OPENCM3_DIR) checkout master
 	$(MAKE) -C $(OPENCM3_DIR)
 	touch $(OPENCM3_SETUP_FILE)
 
